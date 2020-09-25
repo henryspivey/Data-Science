@@ -1,0 +1,10 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+# 2
+library(dplyr)
+par(mfrow=c(1,1))
+baltimore <- NEI %>% filter(fips == '24510')
+head(baltimore)
+png("plot2.png", width = 480, height = 480,units = "px")
+with(baltimore, boxplot(log10(Emissions) ~ year, main="Baltimore Emissions"))
+dev.off()
